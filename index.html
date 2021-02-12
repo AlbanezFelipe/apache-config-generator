@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Config Generator</title>
+    <link rel="stylesheet" href="highlightjs/an-old-hope.css">
+    <style>
+        .output {
+            background-color: #333;
+            display: none;
+        }
+
+        .output > span {
+            display: block;
+            color: white;
+            width: 100%;
+        }
+
+        html, body {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" id="url" placeholder="URL" />
+        <select id="type">
+            <option value="laravel">Laravel</option>
+            <option value="vue">Vue</option>
+        </select>
+        <button id="btn">Generate</button>
+    </div>
+    <hr />
+    <div id="output" class="output">
+        <span># Create conf file <button onclick="copy('code-block-1')">Copy</button></span>
+        <pre><code id="code-block-1" class="language-bash">...</code></pre>
+        <span># <span id="conf"></span> <button onclick="copy('code-block-2')">Copy</button></span>
+        <pre><code id="code-block-2" class="language-apache">...</code></pre>
+        <span># Enable conf file <button onclick="copy('code-block-3')">Copy</button></span>
+        <pre><code id="code-block-3" class="language-bash">...</code></pre>
+        <span># SSL <button onclick="copy('code-block-4')">Copy</button></span>
+        <pre><code id="code-block-4" class="language-bash">...</code></pre>
+        <span># Htaccess if needed <button onclick="copy('code-block-5')">Copy</button></span>
+        <pre><code id="code-block-5" class="language-apache">...</code></pre>
+    </div>
+    <script src="script.js"></script>
+    <script src="highlightjs/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
