@@ -3,6 +3,7 @@ document.getElementById('btn').onclick = function(){
     document.getElementById('output').style.display="block";
 
     let url = document.getElementById('url').value;
+    let path = document.getElementById('path').value;
     let type = document.getElementById('type').value;
     
     let block1 = 
@@ -16,24 +17,24 @@ document.getElementById('btn').onclick = function(){
 
     document.getElementById('conf').innerHTML = `${url}.conf`;
 
-    let path = type == 'laravel' ? 'api/public' : 'app'
+    // let path = type == 'laravel' ? 'api/public' : 'app'
 
     let block2 = 
 `&lt;VirtualHost *:80&gt;
     ServerName ${url}
     ServerAlias www.${url}
-    DocumentRoot /var/www/${path}
+    DocumentRoot ${path}
 
     &lt;Directory /&gt;
             Options FollowSymLinks
             AllowOverride None
     &lt;/Directory&gt;
-    &lt;Directory /var/www/${path}&gt;
+    &lt;Directory ${path}&gt;
             Options Indexes FollowSymLinks MultiViews
             AllowOverride All
             Order allow,deny
             allow from all
-            DirectoryIndex index.php
+            DirectoryIndex index.${type == 'laravel' ? 'php' : 'html'}
             Require all granted
     &lt;/Directory&gt;
 
